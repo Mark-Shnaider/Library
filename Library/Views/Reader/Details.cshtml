@@ -3,11 +3,11 @@
 @{
     ViewData["Title"] = "Details";
 }
-
+<link rel="stylesheet" href="~/list.css" />
 <h1>Подробности</h1>
 
 <div>
-    <h4>Книги</h4>
+    <h4>Читатель</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -22,7 +22,24 @@
         </dd>
     </dl>
 </div>
+    <h4> Список выданных книг </h4>
+    <ul class="list">
+        @foreach (var copy in Model.Copies)
+        {
+            <li>
+                @copy.Book?.Title |
+                @copy.Book?.Author |
+                @copy.Issue_Date
+                <form asp-controller="Reader" asp-action="Details">
+                    <input type="hidden" asp-for="@copy.Id" />
+                    <input type="submit" value="Убрать" />
+                </form>
+            </li>
+        }
+
+    </ul>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
+    <a asp-controller="Reader" asp-action="Give" asp-route-id="@Model.Id"> Выдать книгу </a> |
+    <a asp-controller="Reader" asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
     <a asp-controller="Reader" asp-action="Index">Вернуться</a>
 </div>

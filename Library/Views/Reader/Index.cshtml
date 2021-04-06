@@ -6,7 +6,7 @@
 @using (Html.BeginForm())
 {
     <p>
-         Поиск: @Html.TextBox("SearchString")
+        Поиск: @Html.TextBox("SearchString")
         <input type="submit" value="Search" />
     </p>
 }
@@ -14,8 +14,8 @@
 <table class="index">
     <thead>
         <tr>
-            <th>Название</th>
-            <th>Автор</th>
+            <th>Имя</th>
+            <th>Дата рождения </th>
             <th>Действия</th>
         </tr>
     </thead>
@@ -24,7 +24,7 @@
         {
             <tr>
                 <td>@reader.Name</td>
-                <td>@reader.BirthDate</td>
+                <td>@reader.BirthDate.ToString("dd:MM:yyyy")</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@reader.Id">Редактировать</a>
                     <a asp-action="Details" asp-route-id="@reader.Id">Подробнее</a>
@@ -34,4 +34,5 @@
         }
     </tbody>
 </table>
+
 

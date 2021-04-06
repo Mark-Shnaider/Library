@@ -8,8 +8,6 @@ namespace Library
     {
         public static void Initialize(LibraryContext context)
         {
-            //context.Database.EnsureCreated();
-
             if (context.Books.Any())
             {
                 return;
@@ -33,7 +31,7 @@ namespace Library
                 new Copy { BookId = 1, ReaderId = 3, Issue_Date = DateTime.Now },
                 new Copy { BookId = 2, ReaderId = 3, Issue_Date = DateTime.Now },
             };
-            var q = context.Books.Include(b => b.Copies);
+            
             context.Copies.AddRange(Copies);
             context.SaveChanges();
         }

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Library.Models.Book>
+
+@{
+    ViewData["Title"] = "Give";
+}
+
+<h4> Выдача экземпляра пользователю</h4>
+
+<table class="index">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Автор</th>
+            <th>Артикул</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Vendor</td>
+                <td>
+                    <form asp-controller="Reader" asp-action="Give">
+                        <input type="hidden" asp-for="@book.Id" />
+                        <input type="submit" value="Выдать" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Reader" asp-action="Index"> Вернуться к читаелям</a>
