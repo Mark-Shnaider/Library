@@ -1,0 +1,40 @@
+﻿@model Library.Models.Book
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4> Создать книгу</h4>
+        <form asp-controller="Book" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+            <div>
+                <label asp-for="Title"> </label><br />
+                <input type="text" asp-for="Title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Author"> </label><br />
+                <input type="text" asp-for="Author" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Vendor"> </label><br />
+                <input  asp-for="Vendor" />
+                <span asp-validation-for="Vendor" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="PublishDate"> </label><br />
+                <input asp-for="PublishDate" />
+                <span asp-validation-for="PublishDate" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Count"> </label><br />
+                <input asp-for="Count" />
+                <span asp-validation-for="Count" class="text-danger"></span>
+            </div>
+            <input type="submit" value="Сохранить" />
+        </form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

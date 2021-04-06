@@ -1,0 +1,28 @@
+﻿@model Library.Models.Reader
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Подробности</h1>
+
+<div>
+    <h4>Книги</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Имя
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2"> Дата рождения </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
+    <a asp-controller="Reader" asp-action="Index">Вернуться</a>
+</div>

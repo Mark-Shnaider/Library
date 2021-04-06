@@ -1,0 +1,42 @@
+﻿@model Library.Models.Book
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4> Создать книгу</h4>
+<form asp-controller="Book" asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+    <input type="hidden" asp-for="Id" />
+    <div>
+        <label asp-for="Title"> </label><br />
+        <input type="text" asp-for="Title" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Author"> </label><br />
+        <input type="text" asp-for="Author" />
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Vendor"> </label><br />
+        <input asp-for="Vendor" />
+        <span asp-validation-for="Vendor" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="PublishDate"> </label><br />
+        <input asp-for="PublishDate" />
+        <span asp-validation-for="PublishDate" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Count"> </label><br />
+        <input asp-for="Count" />
+        <span asp-validation-for="Count" class="text-danger"></span>
+    </div><br />
+    <input type="submit" value="Save" /> <br />
+    <a asp-controller="Book" asp-action="Index"> Вернуться </a>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

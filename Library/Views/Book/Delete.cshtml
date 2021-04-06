@@ -1,0 +1,49 @@
+﻿@model Library.Models.Book
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Уверены, что хотите удалить эту книгу?</h1>
+
+<div>
+    <h4>Книги</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Название
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            Автор
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+        <dt class="col-sm-2">
+            Артикул
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vendor)
+        </dd>
+        <dt class="col-sm-2">
+            Дата публикации
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PublishDate)
+        </dd>
+        <dt class="col-sm-2">
+            Количество экземпляров
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Count)
+        </dd>
+    </dl>
+</div>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Удалить" class="btn btn-danger" /> |
+    <a asp-action="Index">Вернуться</a>
+</form>

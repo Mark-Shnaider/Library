@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Library.Models.Reader>
+@{
+    Layout = "_Layout";
+}
+
+@using (Html.BeginForm())
+{
+    <p>
+         Поиск: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+<a asp-controller="Reader" asp-action="Create"> Создрать читателя</a>
+<table class="index">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Автор</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reader in Model)
+        {
+            <tr>
+                <td>@reader.Name</td>
+                <td>@reader.BirthDate</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@reader.Id">Редактировать</a>
+                    <a asp-action="Details" asp-route-id="@reader.Id">Подробнее</a>
+                    <a asp-action="Delete" asp-route-id="@reader.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

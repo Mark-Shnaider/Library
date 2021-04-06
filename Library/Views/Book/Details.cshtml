@@ -1,0 +1,62 @@
+﻿@model Library.Models.Book
+
+@{
+    ViewData["Title"] = "Details";
+}
+<link rel="stylesheet" href="~/list.css" />
+
+<h1>Подробности</h1>
+
+<div>
+    <h4>Книги</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Название
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            Автор
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+        <dt class="col-sm-2">
+            Артикул
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vendor)
+        </dd>
+        <dt class="col-sm-2">
+            Дата публикации
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PublishDate)
+        </dd>
+        <dt class="col-sm-2">
+            Количество экземпляров
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Count)
+        </dd>
+    </dl>
+
+    <div>
+        <h4> Список выданных экземляров </h4>
+        <ul  class="list">
+            @foreach (var copy in Model.Copies)
+            {
+                <li> @copy.Reader?.Name | 
+                 @copy.Issue_Date</li>
+            }
+
+        </ul>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
+    <a asp-action="Index">Вернуться</a>
+</div>
